@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETravel.Nps.DataAccess", "..\Projects\ETravel.Nps.DataAccess\ETravel.Nps.DataAccess.csproj", "{B3529F69-06AC-42AB-B8A1-E8CB8FAE2461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETravel.Nps.DataAccess.Tests.Integration", "..\Tests\ETravel.Nps.DataAccess.Tests.Integration\ETravel.Nps.DataAccess.Tests.Integration.csproj", "{A6219730-AC2D-4049-99D5-EEB96FD6F0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETravel.Nps.Service", "..\Projects\ETravel.Nps.Service\ETravel.Nps.Service.csproj", "{BB9F5A92-4247-4AB7-B08D-09F8D1F0B368}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3529F69-06AC-42AB-B8A1-E8CB8FAE2461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3529F69-06AC-42AB-B8A1-E8CB8FAE2461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3529F69-06AC-42AB-B8A1-E8CB8FAE2461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3529F69-06AC-42AB-B8A1-E8CB8FAE2461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6219730-AC2D-4049-99D5-EEB96FD6F0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6219730-AC2D-4049-99D5-EEB96FD6F0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6219730-AC2D-4049-99D5-EEB96FD6F0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6219730-AC2D-4049-99D5-EEB96FD6F0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB9F5A92-4247-4AB7-B08D-09F8D1F0B368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB9F5A92-4247-4AB7-B08D-09F8D1F0B368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB9F5A92-4247-4AB7-B08D-09F8D1F0B368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB9F5A92-4247-4AB7-B08D-09F8D1F0B368}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
