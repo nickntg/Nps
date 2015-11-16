@@ -483,22 +483,87 @@
         </member>
         <member name="T:ETravel.Nps.Service.Controllers.NpsController">
             <summary>
-            The NPS controller.
+            The NPS service can be used to retrieve, create and update NPS ratings.
             </summary>
         </member>
         <member name="M:ETravel.Nps.Service.Controllers.NpsController.GetRatings(System.String,System.String)">
             <summary>
             Returns a list of NPS ratings based on ratable ID and/or ratable type.
             </summary>
-            <param name="ratable_id">Id of the NPS rating.</param>
+            <param name="ratable_id">Ratable id of the NPS rating.</param>
             <param name="ratable_type">Type of the NPS rating.</param>
-            <returns>List of NPS matching the parameters.</returns>
-            <summary>test</summary>
-            <remarks>remarks</remarks>
+            <returns>List of <seealso cref="T:ETravel.Nps.Service.Models.Nps">NPS</seealso> matching the parameters.</returns>
+        </member>
+        <member name="M:ETravel.Nps.Service.Controllers.NpsController.GetRating(System.String)">
+            <summary>
+            Returns a single NPS rating based on its ID.
+            </summary>
+            <param name="id">Id of the NPS rating.</param>
+            <returns>An <seealso cref="T:ETravel.Nps.Service.Models.Nps">NPS</seealso> matching the id.</returns>
+        </member>
+        <member name="M:ETravel.Nps.Service.Controllers.NpsController.CreateRating(ETravel.Nps.Service.Models.Nps)">
+            <summary>
+            Creates a new NPS rating.
+            </summary>
+            <param name="nps">The NPS to create (id is ignored).</param>
+            <returns>Created <seealso cref="T:ETravel.Nps.Service.Models.Nps">NPS</seealso>.</returns>
+        </member>
+        <member name="M:ETravel.Nps.Service.Controllers.NpsController.UpdateRating(System.String,ETravel.Nps.Service.Models.Nps)">
+            <summary>
+            Updates an existing NPS rating.
+            </summary>
+            <param name="id">Id of the NPS to update.</param>
+            <param name="nps">The NPS to update.</param>
+            <returns>Updated <seealso cref="T:ETravel.Nps.Service.Models.Nps">NPS</seealso>.</returns>
         </member>
         <member name="P:ETravel.Nps.Service.Models.Nps.id">
             <summary>
             ID of the NPS. Assigned by the database backend.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.ratable_type">
+            <summary>
+            Ratable type of the NPS.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.ratable_id">
+            <summary>
+            Ratable ID of the NPS>
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.score">
+            <summary>
+            NPS score (1-9).
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.comment">
+            <summary>
+            Customer comment.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.created_at">
+            <summary>
+            NPS creation date (ISO 8601).
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.updated_at">
+            <summary>
+            NPS update date (ISO 8601).
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.language">
+            <summary>
+            Customer language.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.brand">
+            <summary>
+            Brand used by customer.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Models.Nps.country">
+            <summary>
+            Customer country.
             </summary>
         </member>
     </members>
