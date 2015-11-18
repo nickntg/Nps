@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.Description;
 using ETravel.Nps.DataAccess.Repositories.Interfaces;
+using ETravel.Nps.Service.Filters;
 
 namespace ETravel.Nps.Service.Controllers
 {
@@ -19,6 +20,7 @@ namespace ETravel.Nps.Service.Controllers
         /// <param name="ratable_type">Type of the NPS rating.</param>
         /// <returns>List of <seealso cref="Models.Nps">NPS</seealso> matching the parameters.</returns>
         [Route("ratings")]
+        [ResponseType(typeof(Models.Nps[]))]
         public IHttpActionResult GetRatings([Optional] [DefaultParameterValue("empty string")] string ratable_id, [Optional] [DefaultParameterValue("empty string")] string ratable_type)
         {
             return NotFound();
@@ -30,6 +32,7 @@ namespace ETravel.Nps.Service.Controllers
         /// <param name="id">Id of the NPS rating.</param>
         /// <returns>An <seealso cref="Models.Nps">NPS</seealso> matching the id.</returns>
         [Route("ratings")]
+        [ResponseType(typeof(Models.Nps))]
         public IHttpActionResult GetRating(string id)
         {
             return NotFound();
@@ -42,6 +45,7 @@ namespace ETravel.Nps.Service.Controllers
         /// <returns>Created <seealso cref="Models.Nps">NPS</seealso>.</returns>
         [Route("ratings")]
         [HttpPost]
+        [NpsPost]
         [ResponseType(typeof(Models.Nps))]
         public IHttpActionResult CreateRating([FromBody] Models.Nps nps)
         {

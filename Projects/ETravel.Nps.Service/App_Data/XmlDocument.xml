@@ -4,6 +4,21 @@
         <name>ETravel.Nps.Service</name>
     </assembly>
     <members>
+        <member name="T:ETravel.Nps.Service.ControllersInstaller">
+            <summary>
+            Registers all controllers for DI.
+            </summary>
+        </member>
+        <member name="T:ETravel.Nps.Service.RepositoriesInstaller">
+            <summary>
+            Registers all repositories for DI.
+            </summary>
+        </member>
+        <member name="T:ETravel.Nps.Service.WindsorCompositionRoot">
+            <summary>
+            Taken from http://blog.ploeh.dk/2012/10/03/DependencyInjectioninASP.NETWebAPIwithCastleWindsor/.
+            </summary>
+        </member>
         <member name="M:ETravel.Nps.Service.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
             Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
@@ -515,6 +530,89 @@
             <param name="id">Id of the NPS to update.</param>
             <param name="nps">The NPS to update.</param>
             <returns>Updated <seealso cref="T:ETravel.Nps.Service.Models.Nps">NPS</seealso>.</returns>
+        </member>
+        <member name="T:ETravel.Nps.Service.Filters.ErrorResponse">
+            <summary>
+            The error response is a construct to faciliate unit testing.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Filters.ErrorResponse.StatusCode">
+            <summary>
+            Status code corresponding to a validation error.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Filters.ErrorResponse.Message">
+            <summary>
+            Message corresponding to a validation error.
+            </summary>
+        </member>
+        <member name="T:ETravel.Nps.Service.Filters.NpsPostAttribute">
+            <summary>
+            Apply this to an NPS POST operation to validate the NPS model.
+            </summary>
+        </member>
+        <member name="M:ETravel.Nps.Service.Filters.NpsPostAttribute.Validate(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Validates arguments. Public for easy testing.
+            </summary>
+            <param name="arguments"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ETravel.Nps.Service.Filters.NpsValidator">
+            <summary>
+            This validator ensures that an NPS model is valid.
+            </summary>
+        </member>
+        <member name="M:ETravel.Nps.Service.Filters.NpsValidator.#ctor">
+            <summary>
+            Validates an NPS model.
+            </summary>
+        </member>
+        <member name="T:ETravel.Nps.Service.Filters.ValidationMessages">
+            <summary>
+            Placeholder for validation error messages;
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.NoNpsArguments">
+            <summary>
+            Returned when there's no NPS argument detected. 
+            </summary>
+            <remarks>This should never be encountered...</remarks>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.InvalidOrEmptyNps">
+            <summary>
+            Returned when there's no NPS passed.
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.BrandMustHaveAValue">
+            <summary>
+            Returned when a brand is null or empty.
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.CountryMustHaveAValue">
+            <summary>
+            Returned when a country is null or empty.
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.LanguageMustHaveAValue">
+            <summary>
+            Returned when a language is null or empty.
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.RatableIdMustHaveAValue">
+            <summary>
+            Returned when ratable id is null or empty.
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.RatableTypeMustHaveAValue">
+            <summary>
+            Returned when ratable type is null or empty.
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.ScoreMustBeBetweenOneAndTen">
+            <summary>
+            Returned if a score is not between 1 and 10.
+            </summary>
         </member>
         <member name="P:ETravel.Nps.Service.Models.Nps.id">
             <summary>

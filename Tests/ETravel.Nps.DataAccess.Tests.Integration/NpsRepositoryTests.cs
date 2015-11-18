@@ -8,7 +8,7 @@ namespace ETravel.Nps.DataAccess.Tests.Integration
     [TestFixture]
     public class NpsRepositoryTests
     {
-        [Test, Ignore]
+        [Test, Ignore("Integration test")]
         public void TestGetByRatableType()
         {
             var repo = new NpsRepository();
@@ -17,7 +17,7 @@ namespace ETravel.Nps.DataAccess.Tests.Integration
             Assert.IsTrue(results.Length > 1);
         }
 
-        [Test, Ignore]
+        [Test, Ignore("Integration test")]
         public void TestGetByRatableId()
         {
             var repo = new NpsRepository();
@@ -26,7 +26,7 @@ namespace ETravel.Nps.DataAccess.Tests.Integration
             Assert.IsTrue(results.Length == 2);
         }
 
-        [Test, Ignore]
+        [Test, Ignore("Integration test")]
         public void TestGetByRatableTypeAndId()
         {
             var repo = new NpsRepository();
@@ -35,13 +35,13 @@ namespace ETravel.Nps.DataAccess.Tests.Integration
             Assert.IsTrue(results.Length == 1);
         }
 
-        [Test, Ignore]
+        [Test, Ignore("Integration test")]
         public void TestSaveAndRetrieve()
         {
             TestSaveAndRetrieve(new NpsRepository(), Guid.NewGuid().ToString("N"), "some comment");
         }
 
-        [Test, Ignore]
+        [Test, Ignore("Integration test")]
         public void TestUpdateAndRetrieve()
         {
             var repo = new NpsRepository();
