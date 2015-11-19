@@ -32,9 +32,7 @@ namespace ETravel.Nps.Service.Controllers
         {
             _log.DebugFormat("GET /ratings with ratable id [{0}] and ratable type [{1}]", ratable_id, ratable_type);
 
-            DataAccess.Entities.Nps[] nps = null;
-
-            nps = string.IsNullOrEmpty(ratable_id)
+            DataAccess.Entities.Nps[] nps = string.IsNullOrEmpty(ratable_id)
                 ? NpsRepository.RetrieveByRatableType(ratable_type)
                 : string.IsNullOrEmpty(ratable_type)
                     ? NpsRepository.RetrieveByRatableId(ratable_id)
