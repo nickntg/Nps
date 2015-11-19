@@ -531,6 +531,37 @@
             <param name="nps">The NPS to update.</param>
             <returns>Updated <seealso cref="T:ETravel.Nps.Service.Models.Nps">NPS</seealso>.</returns>
         </member>
+        <member name="T:ETravel.Nps.Service.Extensions.DateExtensions">
+            <summary>
+            Date helper methods.
+            </summary>
+        </member>
+        <member name="M:ETravel.Nps.Service.Extensions.DateExtensions.ToIso8601(System.DateTime)">
+            <summary>
+            Converts a date to ISO8601 format.
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ETravel.Nps.Service.Factories.NpsResponseFactory">
+            <summary>
+            Creates NPS responses from NPS models.
+            </summary>
+        </member>
+        <member name="M:ETravel.Nps.Service.Factories.NpsResponseFactory.ToModel(ETravel.Nps.DataAccess.Entities.Nps)">
+            <summary>
+            Converts from database model to web model.
+            </summary>
+            <param name="nps"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ETravel.Nps.Service.Factories.NpsResponseFactory.ToModel(ETravel.Nps.DataAccess.Entities.Nps[])">
+            <summary>
+            Converts an array of database models to an array of web models.
+            </summary>
+            <param name="nps"></param>
+            <returns></returns>
+        </member>
         <member name="T:ETravel.Nps.Service.Filters.ErrorResponse">
             <summary>
             The error response is a construct to faciliate unit testing.
