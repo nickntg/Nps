@@ -51,5 +51,13 @@
         /// Customer country.
         /// </summary>
         public virtual string country { get; set; }
+
+        public override string ToString()
+        {
+            return
+                string.Format(
+                    "Id:[{0}], ratable type:[{1}], ratable id:[{2}], score:[{3}], comment: [{4}], language:[{5}], brand:[{6}], country:[{7}]",
+                    id, ratable_type, ratable_id, score, comment, language, brand, country);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Web.Http.Description;
 using ETravel.Nps.DataAccess.Repositories.Interfaces;
 using ETravel.Nps.Service.Factories;
 using ETravel.Nps.Service.Filters;
+using log4net;
 
 namespace ETravel.Nps.Service.Controllers
 {
@@ -11,7 +12,12 @@ namespace ETravel.Nps.Service.Controllers
     /// </summary>
     public class NpsController : ApiController
     {
+        /// <summary>
+        /// Data access repository.
+        /// </summary>
         public INpsRepository NpsRepository { get; set; }
+
+        private readonly ILog _log = LogManager.GetLogger(typeof (NpsController));
 
         /// <summary>
         /// Returns a list of NPS ratings based on ratable ID and/or ratable type.
@@ -24,6 +30,8 @@ namespace ETravel.Nps.Service.Controllers
         [ResponseType(typeof(Models.Nps[]))]
         public IHttpActionResult GetRatings(string ratable_id = "", string ratable_type = "")
         {
+            _log.DebugFormat("GET /ratings with ratable id [{0}] and ratable type [{1}]", ratable_id, ratable_type);
+
             DataAccess.Entities.Nps[] nps = null;
 
             nps = string.IsNullOrEmpty(ratable_id)
@@ -48,6 +56,7 @@ namespace ETravel.Nps.Service.Controllers
         [ResponseType(typeof(Models.Nps))]
         public IHttpActionResult GetRating(string id)
         {
+            _log.DebugFormat("GET /ratings with id [{0}]", id);
             return NotFound();
         }
 
@@ -62,6 +71,7 @@ namespace ETravel.Nps.Service.Controllers
         [ResponseType(typeof(Models.Nps))]
         public IHttpActionResult CreateRating([FromBody] Models.Nps nps)
         {
+            _log.DebugFormat("POST /ratings with nps [{0}]", nps);
             return NotFound();
         }
 
@@ -76,6 +86,7 @@ namespace ETravel.Nps.Service.Controllers
         [ResponseType(typeof(Models.Nps))]
         public IHttpActionResult UpdateRating(string id, [FromBody] Models.Nps nps)
         {
+            _log.DebugFormat("PUT /ratings with id [{0}] and nps [{1}]", id, nps);
             return NotFound();
         }
     }
