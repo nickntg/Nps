@@ -152,6 +152,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\NpsController.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
     <Compile Include="Factories\NpsResponseFactory.cs" />
     <Compile Include="Filters\ErrorResponse.cs" />
     <Compile Include="Filters\NpsGetAttribute.cs" />
