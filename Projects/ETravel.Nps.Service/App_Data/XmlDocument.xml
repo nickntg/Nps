@@ -546,6 +546,18 @@
             Message corresponding to a validation error.
             </summary>
         </member>
+        <member name="T:ETravel.Nps.Service.Filters.NpsGetAttribute">
+            <summary>
+            Apply this to an NPS Get operation with ratable id and type arguments.
+            </summary>
+        </member>
+        <member name="M:ETravel.Nps.Service.Filters.NpsGetAttribute.Validate(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Validates arguments. Public for easy testing.
+            </summary>
+            <param name="arguments"></param>
+            <returns></returns>
+        </member>
         <member name="T:ETravel.Nps.Service.Filters.NpsPostAttribute">
             <summary>
             Apply this to an NPS POST operation to validate the NPS model.
@@ -576,6 +588,12 @@
         <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.NoNpsArguments">
             <summary>
             Returned when there's no NPS argument detected. 
+            </summary>
+            <remarks>This should never be encountered...</remarks>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.NoArguments">
+            <summary>
+            Returned where there's no arguments.
             </summary>
             <remarks>This should never be encountered...</remarks>
         </member>
@@ -612,6 +630,11 @@
         <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.ScoreMustBeBetweenOneAndTen">
             <summary>
             Returned if a score is not between 1 and 10.
+            </summary>
+        </member>
+        <member name="F:ETravel.Nps.Service.Filters.ValidationMessages.RatableIdAndTypeMustNotBothBeEmpty">
+            <summary>
+            Returned if both ratable id and type are missing.
             </summary>
         </member>
         <member name="P:ETravel.Nps.Service.Models.Nps.id">

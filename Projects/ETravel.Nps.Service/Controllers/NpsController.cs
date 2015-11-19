@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.Description;
 using ETravel.Nps.DataAccess.Repositories.Interfaces;
+using ETravel.Nps.Service.Factories;
 using ETravel.Nps.Service.Filters;
 
 namespace ETravel.Nps.Service.Controllers
@@ -20,10 +21,23 @@ namespace ETravel.Nps.Service.Controllers
         /// <param name="ratable_type">Type of the NPS rating.</param>
         /// <returns>List of <seealso cref="Models.Nps">NPS</seealso> matching the parameters.</returns>
         [Route("ratings")]
+        [NpsGet]
         [ResponseType(typeof(Models.Nps[]))]
-        public IHttpActionResult GetRatings([Optional] [DefaultParameterValue("empty string")] string ratable_id, [Optional] [DefaultParameterValue("empty string")] string ratable_type)
+        public IHttpActionResult GetRatings(string ratable_id = "", string ratable_type = "")
         {
-            return NotFound();
+            DataAccess.Entities.Nps[] nps = null;
+
+            nps = string.IsNullOrEmpty(ratable_id)
+                ? NpsRepository.RetrieveByRatableType(ratable_type)
+                : string.IsNullOrEmpty(ratable_type)
+                    ? NpsRepository.RetrieveByRatableId(ratable_id)
+                    : NpsRepository.RetrieveByRatableTypeAndId(ratable_type, ratable_id);
+            if (nps == null || nps.Length == 0)
+            {
+                return Ok(new Models.Nps[0]);
+            }
+
+            return Ok(nps.ToModel());
         }
 
         /// <summary>
