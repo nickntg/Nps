@@ -4,7 +4,7 @@ using ETravel.Nps.Service.Extensions;
 namespace ETravel.Nps.Service.Factories
 {
     /// <summary>
-    /// Creates NPS responses from NPS models.
+    /// Creates NPS entities from NPS data entities.
     /// </summary>
     public static class NpsResponseFactory
     {
@@ -31,7 +31,7 @@ namespace ETravel.Nps.Service.Factories
                 ratable_type = nps.RatableType,
                 score = nps.Score,
                 created_at = nps.CreatedAt.ToIso8601(),
-                updated_at = nps.UpdatedAt.ToIso8601()
+                updated_at = nps.UpdatedAt.HasValue ? nps.UpdatedAt.Value.ToIso8601() : string.Empty
             };
         }
 

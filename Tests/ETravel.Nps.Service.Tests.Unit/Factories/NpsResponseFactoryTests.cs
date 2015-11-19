@@ -96,7 +96,14 @@ namespace ETravel.Nps.Service.Tests.Unit.Factories
             Assert.AreEqual(nps.RatableId, modelNps.ratable_id);
             Assert.AreEqual(nps.RatableType, modelNps.ratable_type);
             Assert.AreEqual(nps.Score, modelNps.score);
-            Assert.AreEqual(nps.UpdatedAt.ToIso8601(), modelNps.updated_at);            
+            if (nps.UpdatedAt.HasValue)
+            {
+                Assert.AreEqual(nps.UpdatedAt.Value.ToIso8601(), modelNps.updated_at);
+            }
+            else
+            {
+                Assert.IsNull(modelNps.updated_at);
+            }
         }
     }
 }
