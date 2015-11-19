@@ -56,11 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\NpsResponseFactoryTests.cs" />
     <Compile Include="Filters\NpsGetAtributeTests.cs" />
     <Compile Include="Filters\NpsPostAttributeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Projects\ETravel.Nps.DataAccess\ETravel.Nps.DataAccess.csproj">
+      <Project>{b3529f69-06ac-42ab-b8a1-e8cb8fae2461}</Project>
+      <Name>ETravel.Nps.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Projects\ETravel.Nps.Service\ETravel.Nps.Service.csproj">
       <Project>{bb9f5a92-4247-4ab7-b08d-09f8d1f0b368}</Project>
       <Name>ETravel.Nps.Service</Name>
