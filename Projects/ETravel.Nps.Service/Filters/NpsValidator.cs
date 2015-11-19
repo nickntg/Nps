@@ -9,12 +9,18 @@ namespace ETravel.Nps.Service.Filters
     public class NpsValidator : AbstractValidator<Models.Nps>
     {
         /// <summary>
+        /// True to validate only score (PUT).
+        /// Otherwise, validate everything.
+        /// </summary>
+        public bool ValidateScoreOnly { get; set; }
+
+        /// <summary>
         /// Validates an NPS model.
         /// </summary>
         public NpsValidator()
         {
             RuleFor(nps => nps).NotNull().WithMessage(ValidationMessages.InvalidOrEmptyNps).WithState(x => HttpStatusCode.BadRequest);
-            When(nps => nps != null, () =>
+            When(nps => nps != null && !ValidateScoreOnly, () =>
             {
                 RuleFor(nps => nps.brand)
                     .NotEmpty()
@@ -36,11 +42,11 @@ namespace ETravel.Nps.Service.Filters
                     .NotEmpty()
                     .WithMessage(ValidationMessages.RatableTypeMustHaveAValue)
                     .WithState(x => (HttpStatusCode) 422);
-                RuleFor(nps => nps.score)
-                    .InclusiveBetween(1, 10)
-                    .WithMessage(ValidationMessages.ScoreMustBeBetweenOneAndTen)
-                    .WithState(x => (HttpStatusCode) 422);
             });
+            When(nps => nps != null, () => RuleFor(nps => nps.score)
+                .InclusiveBetween(1, 10)
+                .WithMessage(ValidationMessages.ScoreMustBeBetweenOneAndTen)
+                .WithState(x => (HttpStatusCode) 422));
         }
     }
 }

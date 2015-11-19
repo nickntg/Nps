@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web;
+using System.Web.Http;
 using System.Web.Http.Description;
 using ETravel.Nps.DataAccess.Repositories.Interfaces;
 using ETravel.Nps.Service.Factories;
@@ -50,12 +52,14 @@ namespace ETravel.Nps.Service.Controllers
         /// </summary>
         /// <param name="id">Id of the NPS rating.</param>
         /// <returns>An <seealso cref="Models.Nps">NPS</seealso> matching the id.</returns>
-        [Route("ratings")]
+        [Route("ratings/{id}")]
         [ResponseType(typeof(Models.Nps))]
         public IHttpActionResult GetRating(string id)
         {
             _log.DebugFormat("GET /ratings with id [{0}]", id);
-            return NotFound();
+
+            var nps = NpsRepository.Get(id);
+            return nps == null ? (IHttpActionResult) NotFound() : Ok(nps.ToModel());
         }
 
         /// <summary>
@@ -70,7 +74,14 @@ namespace ETravel.Nps.Service.Controllers
         public IHttpActionResult CreateRating([FromBody] Models.Nps nps)
         {
             _log.DebugFormat("POST /ratings with nps [{0}]", nps);
-            return NotFound();
+
+            var data = nps.FromModel();
+            data.CreatedAt = DateTime.Now;
+            data.UpdatedAt = null;
+            data.Id = Guid.NewGuid().ToString();
+            NpsRepository.Save(data);
+
+            return Created(VirtualPathUtility.AppendTrailingSlash(Request.RequestUri.AbsoluteUri) + data.Id, data.ToModel());
         }
 
         /// <summary>
@@ -81,11 +92,24 @@ namespace ETravel.Nps.Service.Controllers
         /// <returns>Updated <seealso cref="Models.Nps">NPS</seealso>.</returns>
         [Route("ratings/{id}")]
         [HttpPut]
+        [NpsPut]
         [ResponseType(typeof(Models.Nps))]
         public IHttpActionResult UpdateRating(string id, [FromBody] Models.Nps nps)
         {
             _log.DebugFormat("PUT /ratings with id [{0}] and nps [{1}]", id, nps);
-            return NotFound();
+
+            var data = NpsRepository.Get(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+
+            data.Comment = nps.comment;
+            data.Score = nps.score;
+            data.UpdatedAt = DateTime.Now;
+            NpsRepository.Update(data);
+
+            return Ok(data.ToModel());
         }
     }
 }

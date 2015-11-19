@@ -107,7 +107,7 @@ namespace ETravel.Nps.Service.Tests.Unit.Filters
                 }
             }
 
-            var result = v.Validate(dic);
+            var result = v.Validate(dic, false);
 
             if (string.IsNullOrEmpty(expectedMessage))
             {

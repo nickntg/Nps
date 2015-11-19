@@ -12,7 +12,7 @@ namespace ETravel.Nps.Service.Filters
     {
         public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            var response = Validate(actionContext.ActionArguments);
+            var response = Validate(actionContext.ActionArguments, false);
             if (response != null)
             {
                 actionContext.Response = actionContext.Request.CreateErrorResponse(response.StatusCode, response.Message);
@@ -23,15 +23,16 @@ namespace ETravel.Nps.Service.Filters
         /// Validates arguments. Public for easy testing.
         /// </summary>
         /// <param name="arguments"></param>
+        /// <param name="validateScoreOnly"></param>
         /// <returns></returns>
-        public ErrorResponse Validate(Dictionary<string, object> arguments)
+        public ErrorResponse Validate(Dictionary<string, object> arguments, bool validateScoreOnly)
         {
             if (arguments == null || arguments.Count != 1)
             {
                 return new ErrorResponse {StatusCode = HttpStatusCode.BadRequest, Message = ValidationMessages.NoNpsArguments};
             }
 
-            var validator = new NpsValidator();
+            var validator = new NpsValidator {ValidateScoreOnly = validateScoreOnly};
             var results = validator.Validate(arguments["nps"] as Models.Nps);
             if (!results.IsValid)
             {

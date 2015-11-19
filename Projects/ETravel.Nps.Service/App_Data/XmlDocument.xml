@@ -531,6 +531,11 @@
             <param name="nps">The NPS to update.</param>
             <returns>Updated <seealso cref="T:ETravel.Nps.Service.Models.Nps">NPS</seealso>.</returns>
         </member>
+        <member name="P:ETravel.Nps.Service.Controllers.NpsController.NpsRepository">
+            <summary>
+            Data access repository.
+            </summary>
+        </member>
         <member name="T:ETravel.Nps.Service.Extensions.DateExtensions">
             <summary>
             Date helper methods.
@@ -543,9 +548,21 @@
             <param name="dt"></param>
             <returns></returns>
         </member>
+        <member name="T:ETravel.Nps.Service.Factories.NpsDataFactory">
+            <summary>
+            Creates data entities from models.
+            </summary>
+        </member>
+        <member name="M:ETravel.Nps.Service.Factories.NpsDataFactory.FromModel(ETravel.Nps.Service.Models.Nps)">
+            <summary>
+            Converts a web model to a data entity.
+            </summary>
+            <param name="nps"></param>
+            <returns></returns>
+        </member>
         <member name="T:ETravel.Nps.Service.Factories.NpsResponseFactory">
             <summary>
-            Creates NPS responses from NPS models.
+            Creates NPS entities from NPS data entities.
             </summary>
         </member>
         <member name="M:ETravel.Nps.Service.Factories.NpsResponseFactory.ToModel(ETravel.Nps.DataAccess.Entities.Nps)">
@@ -594,12 +611,18 @@
             Apply this to an NPS POST operation to validate the NPS model.
             </summary>
         </member>
-        <member name="M:ETravel.Nps.Service.Filters.NpsPostAttribute.Validate(System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:ETravel.Nps.Service.Filters.NpsPostAttribute.Validate(System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
             <summary>
             Validates arguments. Public for easy testing.
             </summary>
             <param name="arguments"></param>
+            <param name="validateScoreOnly"></param>
             <returns></returns>
+        </member>
+        <member name="T:ETravel.Nps.Service.Filters.NpsPutAttribute">
+            <summary>
+            Apply this to an NPS PUT operation to validate the NPS model.
+            </summary>
         </member>
         <member name="T:ETravel.Nps.Service.Filters.NpsValidator">
             <summary>
@@ -609,6 +632,12 @@
         <member name="M:ETravel.Nps.Service.Filters.NpsValidator.#ctor">
             <summary>
             Validates an NPS model.
+            </summary>
+        </member>
+        <member name="P:ETravel.Nps.Service.Filters.NpsValidator.ValidateScoreOnly">
+            <summary>
+            True to validate only score (PUT).
+            Otherwise, validate everything.
             </summary>
         </member>
         <member name="T:ETravel.Nps.Service.Filters.ValidationMessages">
